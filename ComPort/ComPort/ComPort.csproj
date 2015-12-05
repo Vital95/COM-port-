@@ -53,6 +53,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper\MessageHelper.cs" />
     <Compile Include="Model\MessageEventArgs.cs" />
     <Compile Include="Model\Model.cs" />
     <Compile Include="Model\WorkWithPort.cs" />
