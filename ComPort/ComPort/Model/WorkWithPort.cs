@@ -32,6 +32,16 @@ namespace ComPort
                     port.DataReceived += DataReceivedHandler;
                     port.Open();
                 }
+                else
+                {
+                    if(port.PortName != portName)
+                    {
+                        port.Close();
+                        port.PortName = portName;
+                        port.DataReceived += DataReceivedHandler;
+                        port.Open();
+                    }
+                }
             }
             catch(Exception e)
             {
