@@ -8,10 +8,18 @@ namespace ComPort
 {
     public class Data
     {
-        public int value;
-        public int status;
-        public int id;
+        private int value;
+        private int status;
+        private int id;
         private String outInfo;
+
+        public Data(int value,int status, int id, String outInfo)
+        {
+            this.value = value;
+            this.status = status;
+            this.id = id;
+            this.outInfo = outInfo;
+        }
 
         public int Value
         {
