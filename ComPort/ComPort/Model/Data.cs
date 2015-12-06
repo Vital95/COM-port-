@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ComPort
 {
-    class Data
+    public class Data
     {
-        private int value;
-        private int status;
-        private int id;
+        public int value;
+        public int status;
+        public int id;
         private String outInfo;
 
         public int Value
@@ -21,7 +21,7 @@ namespace ComPort
             }
             set
             {
-                this.value = Value;
+                value = Value;
             }
         }
 
@@ -33,7 +33,7 @@ namespace ComPort
             }
             set
             {
-                this.status = Status;
+                status = Status;
             }
         }
 
@@ -45,7 +45,7 @@ namespace ComPort
             }
             set
             {
-                this.id = Id;
+                id = Id;
             }
         }
 
@@ -57,7 +57,7 @@ namespace ComPort
             }
             set
             {
-                this.outInfo = OutInfo;
+                outInfo = OutInfo;
             }
         }
     }

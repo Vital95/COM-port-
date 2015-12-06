@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 
@@ -19,25 +20,32 @@ namespace ComPort
                 newData += s;
             }
             DateTime localDate = DateTime.Now;
-            if (!ValidateData(newData))
+            if (ValidateData(newData))
             {
                 
                 Data goodData = new Data();
-                char[] delimiterChars1 = { ',', '\n', '\t', '\r' };
-                string[] words1 = data.Split(delimiterChars);
+                char[] delimiterChars1 = { ',', '\n', '\t', '\r', '#' };
+                string[] words1 = newData.Split(delimiterChars1);
+                string[] words2 = new string[words1.Length-1];
+                int q = 0;
+                for(; q< words1.Length - 1; q++)
+                { 
+                    words2[q] = words1[q];
+                }
                 int i = 0;
-                int[] q = new int[words.Length];
-                foreach (string s in words1)
+                int[] z = new int[words2.Length];
+                foreach (string s in words2)
                 {
-                    if (int.TryParse(newData, out q[i]))
+                    if (int.TryParse(s, out z[i]))
                         i++;
                 }
-                goodData.Id = q[0];
-                goodData.Status = q[1];
-                goodData.Value = q[2];
-                String time = localDate.ToString();
 
-                goodData.OutInfo = data + time;
+                goodData.id = z[0];
+                goodData.status = z[1];
+                goodData.value = z[2];
+                String time = localDate.ToString();
+                String sum = data + " " + time;
+                goodData.OutInfo = sum;
                 return goodData;
             }
             else
@@ -57,8 +65,22 @@ namespace ComPort
             {
                 newData += s;
             }
-            System.Text.RegularExpressions.Regex rgx = new System.Text.RegularExpressions.Regex(@"[A][,][0 - 9]{ 1,2}[,]\d{1}[,]\d{1,3}[#]");
-            return rgx.IsMatch(newData);
+            //System.Text.RegularExpressions.Regex rgx = new System.Text.RegularExpressions.Regex(@"[A][,][0 - 9]{ 1,2}[,]\d{1}[,]\d{1,3}[#]");
+            //return rgx.IsMatch(newData);
+
+            //Match m = Regex.Match(newData, @"[A][,][0 - 9]{ 1,2}[,]\d{1}[,]\d{1,3}[#]");
+            //Match m = Regex.Match(newData, "[A][,][0-9]{1,2}[,][0-9][,][0-9]{1,3}[#]");
+            
+            Match m = Regex.Match(newData, "[A][,](([0-9]|[0-1][0-5]))[,][0-9][,][0-9]{1,3}[#]");
+            if (m.Success)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
         }
     }
 }
