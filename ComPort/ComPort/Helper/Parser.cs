@@ -11,23 +11,30 @@ namespace ComPort
     {
         public Data GetParesedData(String data)
         {
+            char[] delimiterChars = {'\n', '\t', '\r' };
+            string[] words = data.Split(delimiterChars);
+            string newData="";
+            foreach (string s in words)
+            {
+                newData += s;
+            }
             DateTime localDate = DateTime.Now;
-            if (ValidateData(data))
+            if (!ValidateData(newData))
             {
                 
                 Data goodData = new Data();
-                char[] delimiterChars = {','};
-                string[] words = data.Split(delimiterChars);
+                char[] delimiterChars1 = { ',', '\n', '\t', '\r' };
+                string[] words1 = data.Split(delimiterChars);
                 int i = 0;
                 int[] q = new int[words.Length];
-                foreach (string s in words)
+                foreach (string s in words1)
                 {
-                    if (int.TryParse(data, out q[i]))
+                    if (int.TryParse(newData, out q[i]))
                         i++;
                 }
-                goodData.Id = q[1];
-                goodData.Status = q[2];
-                goodData.Value = q[3];
+                goodData.Id = q[0];
+                goodData.Status = q[1];
+                goodData.Value = q[2];
                 String time = localDate.ToString();
 
                 goodData.OutInfo = data + time;
@@ -41,10 +48,17 @@ namespace ComPort
             }
         }
 
-        private bool ValidateData(String data)
+        private bool ValidateData(string data)
         {
+            char[] delimiterChars = { '\n', '\t', '\r' };
+            string[] words = data.Split(delimiterChars);
+            string newData = "";
+            foreach (string s in words)
+            {
+                newData += s;
+            }
             System.Text.RegularExpressions.Regex rgx = new System.Text.RegularExpressions.Regex(@"[A][,][0 - 9]{ 1,2}[,]\d{1}[,]\d{1,3}[#]");
-            return rgx.IsMatch(data);
+            return rgx.IsMatch(newData);
         }
     }
 }

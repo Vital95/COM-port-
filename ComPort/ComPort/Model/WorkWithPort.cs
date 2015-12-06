@@ -61,7 +61,9 @@ namespace ComPort
 
             Parser pars = new Parser();
 
-            MessageHelper.ShowMessage(pars.GetParesedData(indata).OutInfo);
+            String lalalal = pars.GetParesedData(indata).OutInfo;
+
+            MessageHelper.ShowMessage(lalalal);
         }
 
         ~WorkWithPort()
