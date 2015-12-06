@@ -54,6 +54,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper\ColorEnum.cs" />
     <Compile Include="Helper\MessageHelper.cs" />
     <Compile Include="Helper\Parser.cs" />
     <Compile Include="Model\Data.cs" />

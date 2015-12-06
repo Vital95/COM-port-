@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace ComPort
 {
-    class Parser
+    public static class Parser
     {
-        public Data GetParesedData(String data)
+        public static Data GetParesedData(String data)
         {
             char[] delimiterChars = {'\n', '\t', '\r' };
             string[] words = data.Split(delimiterChars);
@@ -43,8 +43,11 @@ namespace ComPort
                 String time1 = localDate.ToShortDateString().ToString();
                 String time2 = localDate.ToShortTimeString().ToString();
 
-                String sum = data + " " + time1 + " " + time2;
-                goodData = new Data(z[2],z[1],z[0],sum);
+                String sum = time1 + " " + time2;
+
+                String allout = "machine= " + z[0].ToString() + "\r \n" + sum + "\r \n" + z[2].ToString() + "\r \n" + "status =" + z[1].ToString();
+
+                goodData = new Data(z[2],z[1],z[0],allout);
                 return goodData;
                 
             }
@@ -56,7 +59,7 @@ namespace ComPort
             }
         }
 
-        private bool ValidateData(string data)
+        private static bool ValidateData(string data)
         {
             char[] delimiterChars = { '\n', '\t', '\r' };
             string[] words = data.Split(delimiterChars);

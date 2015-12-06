@@ -10,7 +10,7 @@ namespace ComPort
     {
         private Data info;
 
-        UpdateEventArgs(Data info)
+        public UpdateEventArgs(Data info)
         {
             this.info = info;
         }

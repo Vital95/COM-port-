@@ -17,6 +17,7 @@ namespace ComPort
         {
             workWithPort = new WorkWithPort();
             workWithPort.recvMessage += RecvMessage;
+
         }
 
         public String[] GetPortList()
@@ -42,6 +43,7 @@ namespace ComPort
             {
                 recvMessage(this, e);
             }
+
         }
     }
 

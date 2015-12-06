@@ -12,7 +12,7 @@ namespace ComPort
 
         Model model;
 
-        event EventHandler<UpdateEventArgs> ViewUpdeteHandler;
+        public event EventHandler<UpdateEventArgs> ViewUpdeteHandler;
 
         public Controller()
         {
@@ -39,7 +39,10 @@ namespace ComPort
 
         private void recvMessage(object sender, MessageEventArgs e)
         {
-            MessageHelper.ShowMessage(e.Message + " Controller");
+            if (ViewUpdeteHandler != null)
+            {
+                ViewUpdeteHandler(this, new UpdateEventArgs(Parser.GetParesedData(e.Message)));
+            }
         }
 
 
