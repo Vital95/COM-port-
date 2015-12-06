@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ComPort
 {
+    
     public partial class Form1 : Form
     {
-
         private Controller control = new Controller();
         
         public Form1()

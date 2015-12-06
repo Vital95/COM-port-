@@ -10,6 +10,11 @@ namespace ComPort
 {
     public static class Parser
     {
+        public static GetStatus(String data)
+        {
+
+        }
+
         public static Data GetParesedData(String data)
         {
             char[] delimiterChars = {'\n', '\t', '\r' };
