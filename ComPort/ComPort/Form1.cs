@@ -61,12 +61,17 @@ namespace ComPort
                             {
                                 if (data.Status != Parser.GetStatus(this.dataGridView1.Rows[0].Cells[data.Id].Value.ToString()))
                                 {
-                                   // Console.Beep(350, 10);
+                                    Console.Beep(350, 10);
                                     
                                 };
                             }
-                            this.dataGridView1.Rows[0].Cells[data.Id].Value = data.OutInfo;
-                            this.dataGridView1.Rows[0].Cells[data.Id].Style.BackColor = color[data.Status];
+                            try
+                            {
+                                this.dataGridView1.Rows[0].Cells[data.Id].Value = data.OutInfo;
+                                this.dataGridView1.Rows[0].Cells[data.Id].Style.BackColor = color[data.Status];
+                            }
+                            catch (Exception e) { }
+                            
                         }
                         else
                         {
@@ -76,12 +81,14 @@ namespace ComPort
                                 {
                                     if (data.Status != Parser.GetStatus(this.dataGridView1.Rows[1].Cells[data.Id - 4].Value.ToString()))
                                     {
-                                        //Console.Beep(350, 10);
+                                        Console.Beep(350, 10);
   
                                     };
                                 }
-                                this.dataGridView1.Rows[1].Cells[data.Id - 4].Value = data.OutInfo;
-                                try {
+                                
+                                try
+                                {
+                                    this.dataGridView1.Rows[1].Cells[data.Id - 4].Value = data.OutInfo;
                                     this.dataGridView1.Rows[1].Cells[data.Id - 4].Style.BackColor = color[data.Status];
                                 }
                                 catch (Exception ex) { }
@@ -94,12 +101,17 @@ namespace ComPort
                                     {
                                         if (data.Status != Parser.GetStatus(this.dataGridView1.Rows[2].Cells[data.Id - 8].Value.ToString()))
                                         {
-                                            //Console.Beep(350, 10);
+                                            Console.Beep(350, 10);
                                            
                                         };
                                     }
-                                    this.dataGridView1.Rows[2].Cells[data.Id - 8].Value = data.OutInfo;
-                                    this.dataGridView1.Rows[2].Cells[data.Id - 8].Style.BackColor = color[data.Status];
+                                    try
+                                    {
+                                        this.dataGridView1.Rows[2].Cells[data.Id - 8].Value = data.OutInfo;
+                                        this.dataGridView1.Rows[2].Cells[data.Id - 8].Style.BackColor = color[data.Status];
+                                    }
+                                    catch (Exception e) { }
+                                    
                                 }
                                 else
                                 {
@@ -109,11 +121,15 @@ namespace ComPort
                                         {
                                             if (data.Status != Parser.GetStatus(this.dataGridView1.Rows[3].Cells[data.Id - 12].Value.ToString()))
                                             {
-                                                //Console.Beep(350, 5);
+                                                Console.Beep(350, 5);
                                             };
                                         }
-                                        this.dataGridView1.Rows[3].Cells[data.Id - 12].Value = data.OutInfo;
-                                        this.dataGridView1.Rows[3].Cells[data.Id - 12].Style.BackColor = color[data.Status];
+                                        try
+                                        {
+                                            this.dataGridView1.Rows[3].Cells[data.Id - 12].Value = data.OutInfo;
+                                            this.dataGridView1.Rows[3].Cells[data.Id - 12].Style.BackColor = color[data.Status];
+                                        }
+                                        catch (Exception e) { }
                                     }
                                 }
                             }
