@@ -10,9 +10,30 @@ namespace ComPort
 {
     public static class Parser
     {
-        public static GetStatus(String data)
+        public static int GetStatus(String data)
         {
+            char[] delimiterChars = { '\n', '\t', '\r' };
+            string[] words = data.Split(delimiterChars);
+            string newData = "";
+            foreach (string s in words)
+            {
+                newData += s;
+            }
+            DateTime localDate = DateTime.Now;
 
+                char[] delimiterChars1 = { ',', '\n', '\t', '\r', '=' };
+                string[] words1 = newData.Split(delimiterChars1);
+
+                int i = 0;
+                int[] z = new int[words1.Length];
+                foreach (string s in words1)
+                {
+                    if (int.TryParse(s, out z[i]))
+                        i++;
+                }
+
+                return z[0];
+           
         }
 
         public static Data GetParesedData(String data)
@@ -51,7 +72,8 @@ namespace ComPort
                 String sum = time1 + " " + time2;
 
                 String allout = "machine= " + z[0].ToString() + "\r \n" + sum + "\r \n" + z[2].ToString() + "\r \n" + "status =" + z[1].ToString();
-
+                String log = "machine= " + z[0].ToString() + " " + sum + " " + z[2].ToString() + " " + "status =" + z[1].ToString();
+                Loger.SetLog(log);
                 goodData = new Data(z[2],z[1],z[0],allout);
                 return goodData;
                 

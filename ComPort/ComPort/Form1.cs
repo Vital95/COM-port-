@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,6 +21,7 @@ namespace ComPort
             
             InitializeComponent();
             control.ViewUpdeteHandler += UpdateDataGridHandler;
+
         }
 
         private void UpdateDataGridHandler(object sender, UpdateEventArgs e)
@@ -29,9 +31,58 @@ namespace ComPort
 
         private void UpdateDataGrid(Data data)
         {
-            if (InvokeRequired)
-            {
-                Action action = () =>
+            if (data == null) { return; }
+
+                if (InvokeRequired)
+                {
+                    Action action = () =>
+                    {
+                        if (data.Id - 3 <= 0)
+                        {
+                            this.dataGridView1.Rows[0].Cells[data.Id].Value = data.OutInfo;
+                            if (data.Status != Parser.GetStatus(this.dataGridView1.Rows[0].Cells[data.Id].Value.ToString()))
+                            {
+                                SystemSounds.Beep.Play();
+                            };
+                        }
+                        else
+                        {
+                            if (data.Id - 4 >= 0 && data.Id - 7 <= 0)
+                            {
+                                this.dataGridView1.Rows[1].Cells[data.Id - 4].Value = data.OutInfo;
+                                if (data.Status != Parser.GetStatus(this.dataGridView1.Rows[1].Cells[data.Id - 4].Value.ToString()))
+                                {
+                                    SystemSounds.Beep.Play();
+                                };
+                            }
+                            else
+                            {
+                                if (data.Id - 8 >= 0 && data.Id - 11 <= 0)
+                                {
+                                    this.dataGridView1.Rows[2].Cells[data.Id - 8].Value = data.OutInfo;
+                                    if (data.Status != Parser.GetStatus(this.dataGridView1.Rows[2].Cells[data.Id - 8].Value.ToString()))
+                                    {
+                                        SystemSounds.Beep.Play();
+                                    };
+                                }
+                                else
+                                {
+                                    if (data.Id - 12 >= 0 && data.Id - 15 <= 0)
+                                    {
+                                        this.dataGridView1.Rows[3].Cells[data.Id - 12].Value = data.OutInfo;
+                                        if (data.Status != Parser.GetStatus(this.dataGridView1.Rows[3].Cells[data.Id - 12].Value.ToString()))
+                                        {
+                                            SystemSounds.Beep.Play();
+                                        };
+                                    }
+                                }
+                            }
+                        }
+
+                    };
+                    Invoke(action);
+                }
+                else
                 {
                     if (data.Id - 3 <= 0)
                     {
@@ -39,57 +90,27 @@ namespace ComPort
                     }
                     else
                     {
-                        if (data.Id - 4 >= 0 && data.Id - 7 <= 0)
+                        if (data.Id - 4 >= 0 && data.Id - 3 <= 7)
                         {
-                            this.dataGridView1.Rows[1].Cells[data.Id-4].Value = data.OutInfo;
+                            this.dataGridView1.Rows[1].Cells[data.Id].Value = data.OutInfo;
                         }
                         else
                         {
-                            if (data.Id - 8 >= 0 && data.Id - 11 <= 0)
+                            if (data.Id - 8 >= 0 && data.Id - 3 <= 11)
                             {
-                                this.dataGridView1.Rows[2].Cells[data.Id-8].Value = data.OutInfo;
+                                this.dataGridView1.Rows[2].Cells[data.Id].Value = data.OutInfo;
                             }
                             else
                             {
-                                if (data.Id - 12 >= 0 && data.Id - 15 <= 0)
+                                if (data.Id - 12 >= 0 && data.Id - 3 <= 15)
                                 {
-                                    this.dataGridView1.Rows[3].Cells[data.Id-12].Value = data.OutInfo;
+                                    this.dataGridView1.Rows[3].Cells[data.Id].Value = data.OutInfo;
                                 }
                             }
                         }
                     }
-                };
-                Invoke(action);    
-            }
-            else
-            {
-                if (data.Id - 3 <= 0)
-                {
-                    this.dataGridView1.Rows[0].Cells[data.Id].Value = data.OutInfo;
-                }
-                else
-                {
-                    if (data.Id - 4 >= 0 && data.Id - 3 <= 7)
-                    {
-                        this.dataGridView1.Rows[1].Cells[data.Id].Value = data.OutInfo;
-                    }
-                    else
-                    {
-                        if (data.Id - 8 >= 0 && data.Id - 3 <= 11)
-                        {
-                            this.dataGridView1.Rows[2].Cells[data.Id].Value = data.OutInfo;
-                        }
-                        else
-                        {
-                            if (data.Id - 12 >= 0 && data.Id - 3 <= 15)
-                            {
-                                this.dataGridView1.Rows[3].Cells[data.Id].Value = data.OutInfo;
-                            }
-                        }
-                    }
                 }
             }
-        }
 
         private void Form1_Load(object sender, EventArgs e)
         {

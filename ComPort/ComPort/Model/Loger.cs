@@ -7,9 +7,9 @@ using System.IO;
 
 namespace ComPort
 {
-    static class Loger
+    static public class Loger
     {
-        static void SetLog(String data)
+        static public void SetLog(String data)
         {
             StreamWriter file = new StreamWriter("Log.txt");
             file.WriteLine(data);
