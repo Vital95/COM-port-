@@ -52,12 +52,14 @@ namespace ComPort
         private void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
         {
             SerialPort sp = (SerialPort)sender;
-            string indata = sp.ReadExisting();
+            String indata = sp.ReadExisting();
 
             if (recvMessage != null)
             {
                 recvMessage(this, new MessageEventArgs(indata));
             }
+
+            MessageHelper.ShowMessage(indata);
         }
 
         ~WorkWithPort()
