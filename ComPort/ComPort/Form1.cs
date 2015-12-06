@@ -15,6 +15,8 @@ namespace ComPort
 
         private Controller control = new Controller();
 
+
+
         public Form1()
         {
             InitializeComponent();
