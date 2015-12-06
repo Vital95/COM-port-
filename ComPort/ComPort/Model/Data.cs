@@ -65,7 +65,7 @@ namespace ComPort
             }
             set
             {
-                outInfo = OutInfo;
+                this.outInfo = OutInfo;
             }
         }
     }
