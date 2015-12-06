@@ -54,6 +54,8 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Helper\MessageHelper.cs" />
+    <Compile Include="Helper\Parser.cs" />
+    <Compile Include="Model\Data.cs" />
     <Compile Include="Model\MessageEventArgs.cs" />
     <Compile Include="Model\Model.cs" />
     <Compile Include="Model\WorkWithPort.cs" />
