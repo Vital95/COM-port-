@@ -59,7 +59,9 @@ namespace ComPort
                 recvMessage(this, new MessageEventArgs(indata));
             }
 
-            MessageHelper.ShowMessage(indata);
+            Parser pars = new Parser();
+
+            MessageHelper.ShowMessage(pars.GetParesedData(indata).OutInfo);
         }
 
         ~WorkWithPort()
