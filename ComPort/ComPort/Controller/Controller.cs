@@ -17,6 +17,7 @@ namespace ComPort
         public Controller()
         {
             model = new Model();
+            model.recvMessage += recvMessage;
         }
 
         public void ChoisePortHandler(object sender, EventArgs e)
@@ -36,6 +37,10 @@ namespace ComPort
             return model.GetPortList();
         }
 
+        private void recvMessage(object sender, MessageEventArgs e)
+        {
+            MessageHelper.ShowMessage(e.Message + " Controller");
+        }
 
 
     }

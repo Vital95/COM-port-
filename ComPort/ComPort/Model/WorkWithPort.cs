@@ -58,12 +58,6 @@ namespace ComPort
             {
                 recvMessage(this, new MessageEventArgs(indata));
             }
-
-            Parser pars = new Parser();
-
-            String lalalal = pars.GetParesedData(indata).OutInfo;
-
-            MessageHelper.ShowMessage(lalalal);
         }
 
         ~WorkWithPort()
