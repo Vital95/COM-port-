@@ -12,6 +12,8 @@ namespace ComPort
 
         Model model;
 
+        event EventHandler<UpdateEventArgs> ViewUpdeteHandler;
+
         public Controller()
         {
             model = new Model();
@@ -33,6 +35,7 @@ namespace ComPort
         {
             return model.GetPortList();
         }
+
 
 
     }
