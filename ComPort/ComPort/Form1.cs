@@ -14,10 +14,45 @@ namespace ComPort
     {
 
         private Controller control = new Controller();
+
         public Form1()
         {
             InitializeComponent();
 
+        }
+
+        private void UpdateDataGridHandler(object sender, UpdateEventArgs e)
+        {
+            UpdateDataGrid(e.Info);
+        }
+
+        private void UpdateDataGrid(Data data)
+        {
+            if(data.Id - 3 <= 0)
+            {
+                this.dataGridView1.Rows[0].Cells[data.Id].Value = data.OutInfo;
+            }
+            else
+            {
+                if(data.Id - 4 >=0 && data.Id - 3 <= 7)
+                {
+                    this.dataGridView1.Rows[1].Cells[data.Id].Value = data.OutInfo;
+                }
+                else
+                {
+                    if(data.Id - 8 >= 0 && data.Id - 3 <= 11)
+                    {
+                        this.dataGridView1.Rows[2].Cells[data.Id].Value = data.OutInfo;
+                    }
+                    else
+                    {
+                        if(data.Id - 12 >= 0 && data.Id - 3 <= 15)
+                        {
+                            this.dataGridView1.Rows[3].Cells[data.Id].Value = data.OutInfo;
+                        }
+                    }
+                }
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
