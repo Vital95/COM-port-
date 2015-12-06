@@ -11,10 +11,7 @@ namespace ComPort
     {
         static public void SetLog(String data)
         {
-            StreamWriter file = new StreamWriter("Log.txt");
-            file.WriteLine(data);
-
-            file.Close();
+           File.AppendText("Log.txt").WriteLine(data);
         }
     }
 }
