@@ -15,13 +15,31 @@ namespace ComPort
     public partial class Form1 : Form
     {
         private Controller control = new Controller();
-        
+
+        private List<Color> color = new List<Color>();
+
         public Form1()
         {
             
             InitializeComponent();
             control.ViewUpdeteHandler += UpdateDataGridHandler;
+            #region badone
+            color.Add(Color.Transparent);
+            color.Add(Color.Brown);
+            color.Add(Color.Red);
+            color.Add(Color.Orange);
+            color.Add(Color.Yellow);
+            color.Add(Color.Green);
+            color.Add(Color.Blue);
+            color.Add(Color.Purple);
+            color.Add(Color.Gray);
+            color.Add(Color.White);
+            #endregion
+        }
 
+        public class Color1
+        {
+            
         }
 
         private void UpdateDataGridHandler(object sender, UpdateEventArgs e)
@@ -44,9 +62,11 @@ namespace ComPort
                                 if (data.Status != Parser.GetStatus(this.dataGridView1.Rows[0].Cells[data.Id].Value.ToString()))
                                 {
                                     Console.Beep(350, 500);
+                                    
                                 };
                             }
                             this.dataGridView1.Rows[0].Cells[data.Id].Value = data.OutInfo;
+                            this.dataGridView1.Rows[0].Cells[data.Id].Style.BackColor = color[data.Status];
                         }
                         else
                         {
@@ -57,9 +77,11 @@ namespace ComPort
                                     if (data.Status != Parser.GetStatus(this.dataGridView1.Rows[1].Cells[data.Id - 4].Value.ToString()))
                                     {
                                         Console.Beep(350, 500);
+  
                                     };
                                 }
                                 this.dataGridView1.Rows[1].Cells[data.Id - 4].Value = data.OutInfo;
+                                this.dataGridView1.Rows[1].Cells[data.Id - 4].Style.BackColor = color[data.Status];
                             }
                             else
                             {
@@ -70,9 +92,11 @@ namespace ComPort
                                         if (data.Status != Parser.GetStatus(this.dataGridView1.Rows[2].Cells[data.Id - 8].Value.ToString()))
                                         {
                                             Console.Beep(350, 500);
+                                           
                                         };
                                     }
-                                    this.dataGridView1.Rows[2].Cells[data.Id - 8].Value = data.OutInfo;           
+                                    this.dataGridView1.Rows[2].Cells[data.Id - 8].Value = data.OutInfo;
+                                    this.dataGridView1.Rows[2].Cells[data.Id - 8].Style.BackColor = color[data.Status];
                                 }
                                 else
                                 {
@@ -86,6 +110,7 @@ namespace ComPort
                                             };
                                         }
                                         this.dataGridView1.Rows[3].Cells[data.Id - 12].Value = data.OutInfo;
+                                        this.dataGridView1.Rows[3].Cells[data.Id - 12].Style.BackColor = color[data.Status];
                                     }
                                 }
                             }
