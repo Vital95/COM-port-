@@ -29,7 +29,7 @@ namespace ComPort
                 if (!port.IsOpen)
                 {
                     port.PortName = portName;
-                    port.BaudRate = 280;
+                    port.BaudRate = 115200;
                     port.DataReceived += DataReceivedHandler;
                     port.Open();
                 }

@@ -47,10 +47,11 @@ namespace ComPort
             UpdateDataGrid(e.Info);
         }
 
-        private void UpdateDataGrid(Data data)
+        private void UpdateDataGrid(Data[] dataMas)
         {
-            if (data == null) { return; }
-
+            if (dataMas == null) { return; }
+            foreach (Data data in dataMas)
+            {
                 if (InvokeRequired)
                 {
                     Action action = () =>
@@ -61,8 +62,8 @@ namespace ComPort
                             {
                                 if (data.Status != Parser.GetStatus(this.dataGridView1.Rows[0].Cells[data.Id].Value.ToString()))
                                 {
-                                    Console.Beep(350, 10);
-                                    
+                                    Console.Beep(350, 1);
+
                                 };
                             }
                             try
@@ -71,7 +72,7 @@ namespace ComPort
                                 this.dataGridView1.Rows[0].Cells[data.Id].Style.BackColor = color[data.Status];
                             }
                             catch (Exception e) { }
-                            
+
                         }
                         else
                         {
@@ -81,11 +82,11 @@ namespace ComPort
                                 {
                                     if (data.Status != Parser.GetStatus(this.dataGridView1.Rows[1].Cells[data.Id - 4].Value.ToString()))
                                     {
-                                        Console.Beep(350, 10);
-  
+                                        Console.Beep(350, 1);
+
                                     };
                                 }
-                                
+
                                 try
                                 {
                                     this.dataGridView1.Rows[1].Cells[data.Id - 4].Value = data.OutInfo;
@@ -101,8 +102,8 @@ namespace ComPort
                                     {
                                         if (data.Status != Parser.GetStatus(this.dataGridView1.Rows[2].Cells[data.Id - 8].Value.ToString()))
                                         {
-                                            Console.Beep(350, 10);
-                                           
+                                            Console.Beep(350, 1);
+
                                         };
                                     }
                                     try
@@ -111,7 +112,7 @@ namespace ComPort
                                         this.dataGridView1.Rows[2].Cells[data.Id - 8].Style.BackColor = color[data.Status];
                                     }
                                     catch (Exception e) { }
-                                    
+
                                 }
                                 else
                                 {
@@ -121,7 +122,7 @@ namespace ComPort
                                         {
                                             if (data.Status != Parser.GetStatus(this.dataGridView1.Rows[3].Cells[data.Id - 12].Value.ToString()))
                                             {
-                                                Console.Beep(350, 5);
+                                                Console.Beep(350, 1);
                                             };
                                         }
                                         try
@@ -140,62 +141,63 @@ namespace ComPort
                 }
                 else
                 {
-                if (data.Id - 3 <= 0)
-                {
-                    if (this.dataGridView1.Rows[0].Cells[data.Id].Value != null)
+                    if (data.Id - 3 <= 0)
                     {
-                        if (data.Status != Parser.GetStatus(this.dataGridView1.Rows[0].Cells[data.Id].Value.ToString()))
+                        if (this.dataGridView1.Rows[0].Cells[data.Id].Value != null)
                         {
-                            Console.Beep(350, 5);
-
-                        };
-                    }
-                    this.dataGridView1.Rows[0].Cells[data.Id].Value = data.OutInfo;
-                    this.dataGridView1.Rows[0].Cells[data.Id].Style.BackColor = color[data.Status];
-                }
-                else
-                {
-                    if (data.Id - 4 >= 0 && data.Id - 7 <= 0)
-                    {
-                        if (this.dataGridView1.Rows[1].Cells[data.Id - 4].Value != null)
-                        {
-                            if (data.Status != Parser.GetStatus(this.dataGridView1.Rows[1].Cells[data.Id - 4].Value.ToString()))
+                            if (data.Status != Parser.GetStatus(this.dataGridView1.Rows[0].Cells[data.Id].Value.ToString()))
                             {
-                                Console.Beep(350, 10);
+                                Console.Beep(350, 1);
 
                             };
                         }
-                        this.dataGridView1.Rows[1].Cells[data.Id - 4].Value = data.OutInfo;
-                        this.dataGridView1.Rows[1].Cells[data.Id - 4].Style.BackColor = color[data.Status];
+                        this.dataGridView1.Rows[0].Cells[data.Id].Value = data.OutInfo;
+                        this.dataGridView1.Rows[0].Cells[data.Id].Style.BackColor = color[data.Status];
                     }
                     else
                     {
-                        if (data.Id - 8 >= 0 && data.Id - 11 <= 0)
+                        if (data.Id - 4 >= 0 && data.Id - 7 <= 0)
                         {
-                            if (this.dataGridView1.Rows[2].Cells[data.Id - 8].Value != null)
+                            if (this.dataGridView1.Rows[1].Cells[data.Id - 4].Value != null)
                             {
-                                if (data.Status != Parser.GetStatus(this.dataGridView1.Rows[2].Cells[data.Id - 8].Value.ToString()))
+                                if (data.Status != Parser.GetStatus(this.dataGridView1.Rows[1].Cells[data.Id - 4].Value.ToString()))
                                 {
-                                    Console.Beep(350, 10);
+                                    Console.Beep(350, 1);
 
                                 };
                             }
-                            this.dataGridView1.Rows[2].Cells[data.Id - 8].Value = data.OutInfo;
-                            this.dataGridView1.Rows[2].Cells[data.Id - 8].Style.BackColor = color[data.Status];
+                            this.dataGridView1.Rows[1].Cells[data.Id - 4].Value = data.OutInfo;
+                            this.dataGridView1.Rows[1].Cells[data.Id - 4].Style.BackColor = color[data.Status];
                         }
                         else
                         {
-                            if (data.Id - 12 >= 0 && data.Id - 15 <= 0)
+                            if (data.Id - 8 >= 0 && data.Id - 11 <= 0)
                             {
-                                if (this.dataGridView1.Rows[3].Cells[data.Id - 12].Value != null)
+                                if (this.dataGridView1.Rows[2].Cells[data.Id - 8].Value != null)
                                 {
-                                    if (data.Status != Parser.GetStatus(this.dataGridView1.Rows[3].Cells[data.Id - 12].Value.ToString()))
+                                    if (data.Status != Parser.GetStatus(this.dataGridView1.Rows[2].Cells[data.Id - 8].Value.ToString()))
                                     {
-                                        Console.Beep(350, 5);
+                                        Console.Beep(350, 1);
+
                                     };
                                 }
-                                this.dataGridView1.Rows[3].Cells[data.Id - 12].Value = data.OutInfo;
-                                this.dataGridView1.Rows[3].Cells[data.Id - 12].Style.BackColor = color[data.Status];
+                                this.dataGridView1.Rows[2].Cells[data.Id - 8].Value = data.OutInfo;
+                                this.dataGridView1.Rows[2].Cells[data.Id - 8].Style.BackColor = color[data.Status];
+                            }
+                            else
+                            {
+                                if (data.Id - 12 >= 0 && data.Id - 15 <= 0)
+                                {
+                                    if (this.dataGridView1.Rows[3].Cells[data.Id - 12].Value != null)
+                                    {
+                                        if (data.Status != Parser.GetStatus(this.dataGridView1.Rows[3].Cells[data.Id - 12].Value.ToString()))
+                                        {
+                                            Console.Beep(350, 1);
+                                        };
+                                    }
+                                    this.dataGridView1.Rows[3].Cells[data.Id - 12].Value = data.OutInfo;
+                                    this.dataGridView1.Rows[3].Cells[data.Id - 12].Style.BackColor = color[data.Status];
+                                }
                             }
                         }
                     }

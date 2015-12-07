@@ -8,13 +8,13 @@ namespace ComPort
 {
     class UpdateEventArgs : EventArgs
     {
-        private Data info;
+        private Data[] info;
 
-        public UpdateEventArgs(Data info)
+        public UpdateEventArgs(Data[] info)
         {
             this.info = info;
         }
-        public Data Info
+        public Data[] Info
         {
             get
             {
