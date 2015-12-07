@@ -50,7 +50,7 @@ namespace ComPort
             {
 
                 Data goodData;
-                char[] delimiterChars1 = { ',', '\n', '\t', '\r', '#' };
+                char[] delimiterChars1 = { ',', '\n', '\t', '\r'};
                 string[] words1 = newData.Split(delimiterChars1);
                 string[] words2 = new string[words1.Length-1];
                 int q = 0;
@@ -87,7 +87,18 @@ namespace ComPort
         }
 
 
-
+        public static List<Data> GetAllParsedData(String data )
+        {
+            char[] delimiterChars1 = { '#' };
+            string[] words1 = data.Split(delimiterChars1);
+            List<Data> allData = new List<Data>();
+            foreach (String s in words1)
+            {
+                Data da = GetParesedData(s);
+                allData.Add(da);
+            }
+            return allData;
+        }
 
         private static bool ValidateData(string data)
         {
@@ -98,13 +109,8 @@ namespace ComPort
             {
                 newData += s;
             }
-            //System.Text.RegularExpressions.Regex rgx = new System.Text.RegularExpressions.Regex(@"[A][,][0 - 9]{ 1,2}[,]\d{1}[,]\d{1,3}[#]");
-            //return rgx.IsMatch(newData);
-
-            //Match m = Regex.Match(newData, @"[A][,][0 - 9]{ 1,2}[,]\d{1}[,]\d{1,3}[#]");
-            //Match m = Regex.Match(newData, "[A][,][0-9]{1,2}[,][0-9][,][0-9]{1,3}[#]");
             
-            Match m = Regex.Match(newData, "[A][,](([0-9]|[0-1][0-5]))[,][0-9][,][0-9]{1,3}[#]");
+            Match m = Regex.Match(newData, "[A][,](([0-9]|[0-1][0-5]))[,][0-9][,][0-9]{1,3}");
             if (m.Success)
             {
                 return true;
@@ -115,5 +121,7 @@ namespace ComPort
             }
 
         }
+
+
     }
 }
