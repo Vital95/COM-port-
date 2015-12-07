@@ -18,6 +18,7 @@ namespace ComPort
 
         static public String GetPortName()
         {
+            
             StreamReader reader = new StreamReader("port.txt");
             String name = reader.ReadLine();
             return name;

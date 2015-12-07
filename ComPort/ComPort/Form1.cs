@@ -66,7 +66,7 @@ namespace ComPort
                             {
                                 if (data.Status != Parser.GetStatus(this.dataGridView1.Rows[0].Cells[data.Id].Value.ToString()))
                                 {
-                                    Console.Beep(350, 1);
+                                    SystemSounds.Asterisk.Play();
 
                                 };
                             }
@@ -86,7 +86,7 @@ namespace ComPort
                                 {
                                     if (data.Status != Parser.GetStatus(this.dataGridView1.Rows[1].Cells[data.Id - 4].Value.ToString()))
                                     {
-                                        Console.Beep(350, 1);
+                                        SystemSounds.Asterisk.Play();
 
                                     };
                                 }
@@ -106,7 +106,7 @@ namespace ComPort
                                     {
                                         if (data.Status != Parser.GetStatus(this.dataGridView1.Rows[2].Cells[data.Id - 8].Value.ToString()))
                                         {
-                                            Console.Beep(350, 1);
+                                            SystemSounds.Asterisk.Play();
 
                                         };
                                     }
@@ -126,7 +126,7 @@ namespace ComPort
                                         {
                                             if (data.Status != Parser.GetStatus(this.dataGridView1.Rows[3].Cells[data.Id - 12].Value.ToString()))
                                             {
-                                                Console.Beep(350, 1);
+                                                 SystemSounds.Asterisk.Play();
                                             };
                                         }
                                         try
@@ -155,7 +155,7 @@ namespace ComPort
                         {
                             if (data.Status != Parser.GetStatus(this.dataGridView1.Rows[0].Cells[data.Id].Value.ToString()))
                             {
-                                Console.Beep(350, 1);
+                                SystemSounds.Asterisk.Play();
 
                             };
                         }
@@ -170,7 +170,7 @@ namespace ComPort
                             {
                                 if (data.Status != Parser.GetStatus(this.dataGridView1.Rows[1].Cells[data.Id - 4].Value.ToString()))
                                 {
-                                    Console.Beep(350, 1);
+                                    SystemSounds.Asterisk.Play();
 
                                 };
                             }
@@ -185,7 +185,7 @@ namespace ComPort
                                 {
                                     if (data.Status != Parser.GetStatus(this.dataGridView1.Rows[2].Cells[data.Id - 8].Value.ToString()))
                                     {
-                                        Console.Beep(350, 1);
+                                        SystemSounds.Asterisk.Play();
 
                                     };
                                 }
@@ -200,7 +200,7 @@ namespace ComPort
                                     {
                                         if (data.Status != Parser.GetStatus(this.dataGridView1.Rows[3].Cells[data.Id - 12].Value.ToString()))
                                         {
-                                            Console.Beep(350, 1);
+                                            SystemSounds.Asterisk.Play();
                                         };
                                     }
                                     this.dataGridView1.Rows[3].Cells[data.Id - 12].Value = data.OutInfo;
