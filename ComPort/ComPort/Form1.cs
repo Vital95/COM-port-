@@ -47,7 +47,7 @@ namespace ComPort
             UpdateDataGrid(e.Info);
         }
 
-        private void UpdateDataGrid(Data[] dataMas)
+        private void UpdateDataGrid(List<Data> dataMas)
         {
             if (dataMas == null) { return; }
             foreach (Data data in dataMas)
