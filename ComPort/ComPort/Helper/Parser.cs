@@ -92,7 +92,6 @@ namespace ComPort
             }
         }
 
-
         public static List<Data> GetAllParsedData(String data )
         {
             char[] delimiterChars1 = { '#' };
@@ -126,6 +125,17 @@ namespace ComPort
                 return false;
             }
 
+        }
+
+        public static int GetSpeed(String speed)
+        {
+            int iSpeed;
+
+            if(!int.TryParse(speed, out iSpeed))
+            {
+                iSpeed = -1;
+            }
+            return iSpeed;
         }
 
 

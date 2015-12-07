@@ -10,7 +10,8 @@ namespace ComPort
     class Controller
     {
 
-        Model model;
+        private Model model;
+        private int speed;
 
         public event EventHandler<UpdateEventArgs> ViewUpdeteHandler;
         public event EventHandler<MessageEventArgs> UpdateLabel;
@@ -25,7 +26,7 @@ namespace ComPort
         {
             try
             {
-                model.OpenConnection((sender as ToolStripMenuItem).Text);
+                model.OpenConnection((sender as ToolStripMenuItem).Text, speed);
             }
             catch (Exception ex)
             {
@@ -48,7 +49,12 @@ namespace ComPort
                         {
                             UpdateLabel(this, new MessageEventArgs(name));
                         }
-                        model.OpenConnection();
+                        int iSpeed = Parser.GetSpeed(speed);
+                        if (iSpeed > 0)
+                        {
+                            this.speed = iSpeed;
+                            model.OpenConnection(name, iSpeed);
+                        }
                     }
                 }
                
