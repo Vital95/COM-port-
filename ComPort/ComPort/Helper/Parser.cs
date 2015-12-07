@@ -52,15 +52,15 @@ namespace ComPort
                 Data goodData;
                 char[] delimiterChars1 = { ',', '\n', '\t', '\r'};
                 string[] words1 = newData.Split(delimiterChars1);
-                string[] words2 = new string[words1.Length-1];
+                //string[] words2 = new string[words1.Length-1];
                 int q = 0;
-                for(; q< words1.Length - 1; q++)
-                { 
-                    words2[q] = words1[q];
-                }
+                //for(; q< words1.Length - 1; q++)
+                //{ 
+                //    words2[q] = words1[q];
+                //}
                 int i = 0;
-                int[] z = new int[words2.Length];
-                foreach (string s in words2)
+                int[] z = new int[words1.Length];
+                foreach (string s in words1)
                 {
                     if (int.TryParse(s, out z[i]))
                         i++;
@@ -70,17 +70,21 @@ namespace ComPort
                 String time2 = localDate.ToShortTimeString().ToString();
 
                 String sum = time1 + " " + time2;
-
+                string substr1 = " PM";
+                string substr2 = " AM";
+               
                 String allout = "machine= " + z[0].ToString() + "\r \n" + sum + "\r \n" + z[2].ToString() + "\r \n" + "status =" + z[1].ToString();
-                String log = "machine= " + z[0].ToString() + " " + sum + " " + z[2].ToString() + " " + "status =" + z[1].ToString();
+
+                sum = sum.Replace(substr1, "");
+                sum = sum.Replace(substr2, "");
+
+                String log = "machine= " + z[0].ToString() + ", " + sum + ", " + z[2].ToString() + ". " + "status =" + z[1].ToString();
                 Loger.SetLog(log);
                 goodData = new Data(z[2],z[1],z[0],allout);
                 return goodData;
-                
             }
             else
             {
-                
                 Data badData = null;
                 return badData;
             }
