@@ -26,6 +26,10 @@ namespace ComPort
         {
             try
             {
+                if(speed < 0)
+                {
+                    speed = 115200;
+                }
                 model.OpenConnection((sender as ToolStripMenuItem).Text, speed);
             }
             catch (Exception ex)
