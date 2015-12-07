@@ -41,7 +41,7 @@ namespace ComPort
         {
             if (ViewUpdeteHandler != null)
             {
-                ViewUpdeteHandler(this, new UpdateEventArgs(Parser.GetParesedData(e.Message)));
+                ViewUpdeteHandler(this, new UpdateEventArgs(Parser.GetAllParsedData(e.Message)));
             }
         }
 
