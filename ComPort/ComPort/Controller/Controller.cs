@@ -13,6 +13,7 @@ namespace ComPort
         Model model;
 
         public event EventHandler<UpdateEventArgs> ViewUpdeteHandler;
+        public event EventHandler<MessageEventArgs> UpdateLabel;
 
         public Controller()
         {
@@ -34,7 +35,26 @@ namespace ComPort
 
         public String[] GetComPorts()
         {
-            return model.GetPortList();
+            String name = Loger.GetPortName();
+            String speed = Loger.GetSpeed();
+            String[] portNames = model.GetPortList();
+            if (name != "")
+            {
+                foreach(String port in portNames)
+                {
+                    if(port == name)
+                    {
+                        if(UpdateLabel != null)
+                        {
+                            UpdateLabel(this, new MessageEventArgs(name));
+                        }
+                        model.OpenConnection();
+                    }
+                }
+               
+                 
+            }
+            return portNames;
         }
 
         private void recvMessage(object sender, MessageEventArgs e)

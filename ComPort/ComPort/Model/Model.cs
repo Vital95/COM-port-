@@ -25,11 +25,11 @@ namespace ComPort
             return workWithPort.GetPortList();
         }
 
-        public void OpenConnection(String portName)
+        public void OpenConnection(String portName, int speed)
         {
             try
             {
-                workWithPort.CreateConnection(portName);
+                workWithPort.CreateConnection(portName, speed);
             }
             catch(Exception e)
             {

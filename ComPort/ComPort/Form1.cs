@@ -255,5 +255,17 @@ namespace ComPort
         {
             label1.Text = "Port : " + (sender as ToolStripMenuItem).Text;
         }
+
+        private void UpdateLabel(object sender, MessageEventArgs e)
+        {
+            if (InvokeRequired)
+            {
+                Action action = () =>
+                {
+                    label1.Text = e.Message;
+                };
+                Invoke(action);
+            }
+        }
     }
 }
