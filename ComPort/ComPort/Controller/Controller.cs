@@ -43,6 +43,13 @@ namespace ComPort
             String name = Loger.GetPortName();
             String speed = Loger.GetSpeed();
             String[] portNames = model.GetPortList();
+
+            int iSpeed = Parser.GetSpeed(speed);
+            if(iSpeed > 0)
+            {
+                this.speed = iSpeed; ;
+            }
+
             if (name != null)
             {
                 foreach(String port in portNames)
@@ -53,10 +60,9 @@ namespace ComPort
                         {
                             UpdateLabel(this, new MessageEventArgs(name));
                         }
-                        int iSpeed = Parser.GetSpeed(speed);
+                       
                         if (iSpeed > 0)
                         {
-                            this.speed = iSpeed;
                             model.OpenConnection(name, iSpeed);
                         }
                     }

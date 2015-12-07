@@ -23,6 +23,7 @@ namespace ComPort
             
             InitializeComponent();
             control.ViewUpdeteHandler += UpdateDataGridHandler;
+            control.UpdateLabel += UpdateLabel;
             #region badone
             color.Add(Color.Transparent);
             color.Add(Color.Brown);
