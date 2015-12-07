@@ -226,6 +226,9 @@ namespace ComPort
                 this.dataGridView1.Columns[i].Width = dataGridView1.Size.Width / 4;
                 this.dataGridView1.Rows[i].Height = dataGridView1.Size.Height / 4;
             }
+
+            String[] comPortsSet = control.GetComPorts();
+            GenerationOfCheckPorts(comPortsSet);
         }
 
         private void Form1_Resize(object sender, EventArgs e)
@@ -234,12 +237,6 @@ namespace ComPort
             {
                 this.dataGridView1.Rows[i].Height = dataGridView1.Size.Height / 4;
             }
-        }
-
-        private void chosePortToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            String[] comPortsSet = control.GetComPorts();
-            GenerationOfCheckPorts(comPortsSet);
         }
 
         private void GenerationOfCheckPorts(String [] ports)

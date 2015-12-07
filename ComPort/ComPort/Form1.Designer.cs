@@ -122,7 +122,6 @@
             this.chosePortToolStripMenuItem.Name = "chosePortToolStripMenuItem";
             this.chosePortToolStripMenuItem.Size = new System.Drawing.Size(77, 20);
             this.chosePortToolStripMenuItem.Text = "Chose port";
-            this.chosePortToolStripMenuItem.Click += new System.EventHandler(this.chosePortToolStripMenuItem_Click);
             // 
             // label1
             // 

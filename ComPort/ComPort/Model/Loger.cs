@@ -18,19 +18,34 @@ namespace ComPort
 
         static public String GetPortName()
         {
-            
-            StreamReader reader = new StreamReader("port.txt");
-            String name = reader.ReadLine();
+            String name = null;
+            try
+            {
+                StreamReader reader = new StreamReader("port.txt");
+                name = reader.ReadLine();
+                reader.Close();
+            }
+            catch(Exception e)
+            {
+                SetPortName("");
+            }
             return name;
-
-
         }
 
         static public String GetSpeed()
         {
-            StreamReader reader = new StreamReader("speed.txt");
-            String speed = reader.ReadLine();
-            reader.Close();
+            String speed = null;
+            try
+            {
+                StreamReader reader = new StreamReader("speed.txt");
+                speed = reader.ReadLine();
+                reader.Close();
+            }
+            catch(Exception e)
+            {
+                speed = "115200";
+                CreateSpeedFile("115200");
+            }
             return speed;
         }
 
@@ -38,6 +53,13 @@ namespace ComPort
         {
             StreamWriter writer = new StreamWriter("port.txt");
             writer.WriteLine(name);
+            writer.Close();
+        }
+
+        static private void CreateSpeedFile(String speed)
+        {
+            StreamWriter writer = new StreamWriter("speed.txt");
+            writer.WriteLine(speed);
             writer.Close();
         }
     }

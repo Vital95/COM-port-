@@ -39,7 +39,7 @@ namespace ComPort
             String name = Loger.GetPortName();
             String speed = Loger.GetSpeed();
             String[] portNames = model.GetPortList();
-            if (name != "")
+            if (name != null)
             {
                 foreach(String port in portNames)
                 {
