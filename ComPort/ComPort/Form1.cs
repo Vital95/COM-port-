@@ -52,6 +52,10 @@ namespace ComPort
             if (dataMas == null) { return; }
             foreach (Data data in dataMas)
             {
+                if(data == null)
+                {
+                    return;
+                }
                 if (InvokeRequired)
                 {
                     Action action = () =>
@@ -141,6 +145,10 @@ namespace ComPort
                 }
                 else
                 {
+                    if(data == null)
+                    {
+                        return;
+                    }
                     if (data.Id - 3 <= 0)
                     {
                         if (this.dataGridView1.Rows[0].Cells[data.Id].Value != null)
