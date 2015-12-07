@@ -78,6 +78,8 @@ namespace ComPort
                 sum = sum.Replace(substr1, "");
                 sum = sum.Replace(substr2, "");
 
+
+
                 String log = "machine= " + z[0].ToString() + ", " + sum + ", " + z[2].ToString() + ". " + "status =" + z[1].ToString();
                 Loger.SetLog(log);
                 goodData = new Data(z[2],z[1],z[0],allout);
