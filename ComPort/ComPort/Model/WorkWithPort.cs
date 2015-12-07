@@ -22,14 +22,14 @@ namespace ComPort
             return SerialPort.GetPortNames();
         }
 
-        public void CreateConnection(String portName)
+        public void CreateConnection(String portName, int speed)
         {
             try
             {
                 if (!port.IsOpen)
                 {
                     port.PortName = portName;
-                    port.BaudRate = 115200;
+                    port.BaudRate = speed;
                     port.DataReceived += DataReceivedHandler;
                     port.Open();
                 }
@@ -65,6 +65,7 @@ namespace ComPort
         {
             if (port.IsOpen)
             {
+                Loger.SetPortName(port.PortName);
                 port.Close();
             }
         }

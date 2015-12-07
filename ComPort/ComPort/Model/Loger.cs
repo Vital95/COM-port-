@@ -15,5 +15,29 @@ namespace ComPort
             sw.WriteLine(data);
             sw.Close();
         }
+
+        static public String GetPortName()
+        {
+            StreamReader reader = new StreamReader("port.txt");
+            String name = reader.ReadLine();
+            return name;
+
+
+        }
+
+        static public String GetSpeed()
+        {
+            StreamReader reader = new StreamReader("speed.txt");
+            String speed = reader.ReadLine();
+            reader.Close();
+            return speed;
+        }
+
+        static public void SetPortName(String name)
+        {
+            StreamWriter writer = new StreamWriter("port.txt");
+            writer.WriteLine(name);
+            writer.Close();
+        }
     }
 }
