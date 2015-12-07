@@ -129,11 +129,16 @@ namespace ComPort
 
         public static int GetSpeed(String speed)
         {
-            int iSpeed;
+            int iSpeed = -1;
 
-            if(!int.TryParse(speed, out iSpeed))
+            char[] delimiterChars = { '\n', '\t', '\r', ' ' };
+            string[] words = speed.Split(delimiterChars);
+            foreach (String s in words)
             {
-                iSpeed = -1;
+                if (!int.TryParse(s, out iSpeed))
+                {
+                    iSpeed = -1;
+                }
             }
             return iSpeed;
         }
