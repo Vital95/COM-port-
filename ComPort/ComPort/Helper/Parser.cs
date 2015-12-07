@@ -86,6 +86,9 @@ namespace ComPort
             }
         }
 
+
+
+
         private static bool ValidateData(string data)
         {
             char[] delimiterChars = { '\n', '\t', '\r' };

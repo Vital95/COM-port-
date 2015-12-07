@@ -55,7 +55,6 @@ namespace ComPort
         {
             SerialPort sp = (SerialPort)sender;
             String indata = sp.ReadExisting();
-
             if (recvMessage != null)
             {
                 recvMessage(this, new MessageEventArgs(indata));
