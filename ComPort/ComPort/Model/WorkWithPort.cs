@@ -63,7 +63,7 @@ namespace ComPort
 
         ~WorkWithPort()
         {
-            if (port.IsOpen)
+            if (!port.IsOpen)
             {
                 Loger.SetPortName(port.PortName);
                 port.Close();

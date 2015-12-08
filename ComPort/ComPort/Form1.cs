@@ -227,7 +227,11 @@ namespace ComPort
                 this.dataGridView1.Columns[i].Width = dataGridView1.Size.Width / 4;
                 this.dataGridView1.Rows[i].Height = dataGridView1.Size.Height / 4;
             }
-
+            try
+            {
+                label1.Text = "Port : " + Loger.GetPortName();
+            }
+            catch (Exception ex) { }
             String[] comPortsSet = control.GetComPorts();
             GenerationOfCheckPorts(comPortsSet);
         }
